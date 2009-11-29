@@ -19,7 +19,6 @@ while getopts "rDo:d:" FLAG ; do
 done
 
 if [[ $NEW = 1 ]] ; then
-    echo "starting again"
     rm -f ${DATABASE_FILE}
     sqlite3 ${DATABASE_FILE} < ${ROOT}/create_database.sql
 fi
