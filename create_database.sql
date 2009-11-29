@@ -16,6 +16,8 @@ create table node_tags (
     UNIQUE ( node_id, key, value )
 );
 
+-- TODO there should be some sort of 'ON DELETE CASCADE' here
+
 create index node_tags_node_id ON node_tags ( node_id );
 create index node_tags_key ON node_tags ( key );
 
@@ -32,6 +34,8 @@ create table way_tags (
     UNIQUE ( way_id, key, value )
 );
 
+-- TODO there should be some sort of 'ON DELETE CASCADE' here
+
 create index way_tags_way_id ON way_tags ( way_id );
 create index way_tags_key ON way_tags ( key );
 
@@ -41,6 +45,8 @@ create table way_nodes (
     node_id INTEGER REFERENCES nodes ( id ),
     UNIQUE ( way_id, local_order, node_id )
 );
+
+-- TODO there should be some sort of 'ON DELETE CASCADE' here
 
 create index way_nodes_way_id ON way_nodes ( way_id );
 create index way_nodes_node_id ON way_nodes ( node_id );
@@ -57,6 +63,8 @@ create table relation_tags (
     value TEXT,
     UNIQUE ( relation_id, key, value )
 );
+
+-- TODO there should be some sort of 'ON DELETE CASCADE' here
 
 create index relation_tags_relation_id ON relation_tags ( relation_id );
 create index relation_tags_key ON relation_tags ( key );

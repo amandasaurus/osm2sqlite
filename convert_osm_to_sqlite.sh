@@ -23,6 +23,10 @@ if [[ $NEW = 1 ]] ; then
     sqlite3 ${DATABASE_FILE} < ${ROOT}/create_database.sql
 fi
 
+# TODO check if file is bzipped and unzip it
+
+# TODO check if pv is not installed and use cat instead
+
 pv -N "extracting from osm" ${OSM_FILE} | python ${ROOT}/osm2tsvs.py
 
 if [[ $DUPE = 1 ]] ; then
