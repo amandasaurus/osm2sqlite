@@ -24,7 +24,7 @@ if [[ $NEW = 1 ]] ; then
     sqlite3 ${DATABASE_FILE} < ${ROOT}/create_database.sql
 fi
 
-#pv -N "extracting from osm" ${OSM_FILE} | python ${ROOT}/osm2tsvs.py
+pv -N "extracting from osm" ${OSM_FILE} | python ${ROOT}/osm2tsvs.py
 
 if [[ $DUPE = 1 ]] ; then
     sqlite3 ${DATABASE_FILE} < ${ROOT}/create_tmp_database.sql
