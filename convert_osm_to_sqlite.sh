@@ -18,6 +18,8 @@ while getopts "rDo:d:" FLAG ; do
 
 done
 
+trap "rm -f *.gz fifo" EXIT
+
 if [[ $NEW = 1 ]] ; then
     rm -f ${DATABASE_FILE}
     sqlite3 ${DATABASE_FILE} < ${ROOT}/create_database.sql
@@ -64,8 +66,6 @@ import_file way_nodes
 import_file relations
 import_file relation_tags
 import_file relation_members
-
-rm -f nodes.tsv.gz node_tags.tsv.gz ways.tsv.gz way_tags.tsv.gz way_nodes.tsv.gz relations.tsv.gz relation_tags.tsv.gz relation_members.tsv.gz fifo
 
 if [[ $DUPE = 1 ]] ; then
     sqlite3 ${DATABASE_FILE} "drop table tmp_nodes;"
